@@ -8,9 +8,9 @@ import products from './api/products'
 import companies from './api/companies'
 import icons from './api/icons'
 
-function App() {
+function App(){
     const articlesList = articlesLinked.map(article =>
-        <div className="col-sm-6 col-lg-4 m-auto">
+        <div className="col-sm-6 col-lg-4 m-auto" key={article.title}>
             <div className="item-article item">
                 <div className="item-article__img item-img">
                     <img src={article.img} className="item-article__img item-img" alt={article.title}/>
@@ -26,7 +26,7 @@ function App() {
         </div>
     );
     const productList = products.map(product =>
-        <div className="col-sm-6 col-md-4 col-lg-4">
+        <div className="col-sm-6 col-md-4 col-lg-4" key={product.title}>
             <div className="item-product item">
                 <div className="item-product__img item-img">
                     <img src={product.img} alt={product.title}/>
@@ -43,12 +43,12 @@ function App() {
         </div>
     );
     const companiesList = companies.map(company =>
-        <div className="companies-list__item">
+        <div className="companies-list__item" key={company.name}>
             <img src={company.img} alt={company.name}/>
         </div>
     );
-    const iconsList = icons.map(icon =>
-        <div className="icon-item">
+    const iconsList = icons.map(icon=>
+        <div className="icon-item" key={icon.name}>
             <a href={icon.link}>
                 <img src={icon.img} alt={icon.name}/>
             </a>

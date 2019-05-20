@@ -8,29 +8,42 @@ class Header extends React.Component {
         this.state = {
             isMobile: 0,
             menuOpen: 0,
+            subMenuOpen: 0
         };
         this.toggleMenu = this.toggleMenu.bind(this);
     }
-    resize(){
+
+    resize() {
         this.setState({isMobile: window.innerWidth < 992});
     }
+
     componentDidMount() {
         window.addEventListener("resize", this.resize.bind(this));
         this.resize();
     }
-    toggleMenu(){
+
+    toggleMenu() {
         this.setState({menuOpen: !this.state.menuOpen})
     }
+
+    openSub = (e) => {
+        e.preventDefault();
+        this.setState({subMenuOpen: !this.state.subMenuOpen})
+    }
+
     render() {
         let menuClass = 'menu-wrap',
-            burgerClass = 'btn-burger';
+            burgerClass = 'btn-burger',
+            parentClass = 'menu__item  menu__item-parent';
         if (this.state.menuOpen && this.state.isMobile) {
             menuClass += ' menu-open';
             burgerClass += ' active';
         }
-        if((this.state.isMobile)){
+        if ((this.state.isMobile))
             menuClass += ' menu-mobile';
-        }
+
+        if (this.state.subMenuOpen)
+            parentClass += ' open';
 
         return (
             <header className="header">
@@ -39,15 +52,15 @@ class Header extends React.Component {
                         <div className="col-4 col-sm-3">
                             <img src={logo} alt="Company Name"/>
                         </div>
-                        <div className="col-auto ml-2 col-md-6 ml-md-5 col-lg-6 ml-lg-4 pl-lg-4">
+                        <div className="col-auto ml-auto ml-2 col-md-6 ml-md-5 col-lg-6 ml-lg-4 pl-lg-4">
                             <div
                                 className={this.state.isMobile ? burgerClass : 'hidden'} onClick={this.toggleMenu}>
-                            <span></span>
+                                <span></span>
                             </div>
                             <nav className={menuClass}>
                                 <ul className="menu">
-                                    <li className="menu__item  menu__item-parent">
-                                        <a href="/">Products</a>
+                                    <li className={parentClass}>
+                                        <a href="/" onClick={this.openSub.bind(this)}>Products</a>
                                         <ul className="menu__item-child">
                                             <li className="menu__item">
                                                 <a href="/">Product 1</a>
