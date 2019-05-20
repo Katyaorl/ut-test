@@ -547,7 +547,10 @@ img {
     align-items: center;
     background-color: rgba(#fff, .3);
     border-radius: 50%;
-
+    transition: .25s;
+    &:hover {
+      background-color: rgba(#85b657, .6);
+    }
     &:first-child {
       margin-left: 0;
     }
