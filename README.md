@@ -1,7 +1,15 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Страница проекта: https://katyaorl.github.io/ut-test/
 
-In the project directory, you can run:
+Чтобы запустить проект на компьютере
+
+### `git clone https://github.com/Katyaorl/ut-test.git`
+
+Затем установить зависомости:
+
+### `npm i`
+
+Затем запустить проект:
 
 ### `npm start`
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Открыть: [http://localhost:3000](http://localhost:3000) в браузере.
